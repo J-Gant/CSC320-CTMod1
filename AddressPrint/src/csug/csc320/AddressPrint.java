@@ -1,19 +1,43 @@
 package csug.csc320;
+import java.util.Scanner;
+import java.util.ArrayList;
 
 public class AddressPrint {
 
 	public static void main(String[] args) {
-		String nameFirst = "Jeremy";
-		String nameLast = "Gant";
-		String streetAddress = "631 Carlsbad Dr";
-		String city = "Grand Junction";
-		String zipCode = "81507";		//zip code not treated as number, therefore string
+		Scanner scnr = new Scanner(System.in);
+		//ArrayList<Address> addressList = new ArrayList<>();
 		
-		System.out.println(nameFirst);
-		System.out.println(nameLast);
-		System.out.println(streetAddress);
-		System.out.println(city);
-		System.out.println(zipCode);
+		System.out.println("Please enter your name and address in the following format or ");
+		System.out.println("Type \"q\" to quit.\n");
+		System.out.println();
+		System.out.println("first name, last name, address, city, state, zip code");
+		
+		String input = scnr.nextLine();
+		
+		while (!input.equalsIgnoreCase("q")) {
+			String [] inputParts = input.trim().split("\\s*,\\s*");
+			if (inputParts.length != 6) {
+				System.out.println("Invalid format. Please enter exactly 6 comma-separated values\n");
+				input = scnr.nextLine();
+				continue;
+			}
+			Address myAddress = new Address(
+				inputParts[0], inputParts[1], inputParts[2],
+				inputParts[3], inputParts[4], inputParts[5]);
+			
+			System.out.println();
+			myAddress.printAddress();
+			
+			input = "q";
+			continue;
+		}
+		
+		if (input.equalsIgnoreCase("q")) {
+			System.out.println("Goodbye");
+			scnr.close();
+			System.exit(0);
+		}
+		
 	}
-
 }
