@@ -8,7 +8,7 @@ public class Address {
 	private String state;
 	private String zipCode;
 	
-	//constructor
+	//parameterized constructor for Address objects
 	public Address(String nameFirst, String nameLast, String streetAddress, String state, String city, String zipCode) {
 		this.nameFirst = nameFirst.trim();
 		this.nameLast = nameLast.trim();
@@ -18,6 +18,7 @@ public class Address {
 		this.zipCode = zipCode.trim();
 	}
 	
+	//echos input for user address
 	public void printAddress() {
 		System.out.println(nameFirst + " " + nameLast);
         System.out.println(streetAddress);
